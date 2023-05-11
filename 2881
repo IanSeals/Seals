@@ -1,0 +1,18 @@
+Move J 
+  Waypoint Initial
+  Waypoint 1
+Wait for Sensor = HI
+Gripper 50 mm
+Move L 
+  Waypoint 2
+Gripper Close 
+Move L 
+  Waypoint 3
+Wait 1 sec.
+Move J 
+  Waypoint 4
+Gripper 50 mm
+Move L 
+  Waypoint 5
+Move J 
+  
