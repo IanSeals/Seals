@@ -11,7 +11,7 @@ Move L
   Waypoint 3 (Lift tray above conveyor)
 Wait 1 sec.
 Move J 
-  Waypoint 4 (Move tray to platform)
+  Waypoint 4 (Move tray to reciever)
 Gripper 50 mm
 Move L 
   Waypoint 5 (Lift above tray)
@@ -21,7 +21,7 @@ Loop
     Gripper Open A mm
     Move L (push tray to back)
     Until
-    Force = X N
+    Linear Insertion > Force Threshold
     Move J
        Waypoint 7 (In front of first row)
     Gripper Close 
@@ -63,13 +63,8 @@ Multipoint Path
 Move J 
   Waypoint 20 (To bin)
  Gripper Close 
-
- 
- 
- 
- 
- 
- Thread 1
+End Loop
+Thread 1
   Set Conveyor 1 = On
   Wait Sensor 1 = HI
   Set Conveyor 1 = Off
