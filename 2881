@@ -1,6 +1,8 @@
 Move J 
+  Waypoint 0
   Waypoint 1 (Hover over tray)
 Wait for Sensor = HI
+Wait 1 sec.
 Gripper 50 mm
 Move L 
   Waypoint 2 (Lower down to tray)
@@ -14,7 +16,62 @@ Gripper 50 mm
 Move L 
   Waypoint 5 (Lift above tray)
 Move J 
-  Waypoint 6 (position in front of tray)
-Move L (push tray to back)
-Force (until X N)
-    
+  Waypoint 6 (Position in front of tray)
+Loop
+    Gripper Open A mm
+    Move L (push tray to back)
+    Until
+    Force = X N
+    Move J
+       Waypoint 7 (In front of first row)
+    Gripper Close 
+    Counter = Counter + 1
+    If counter = 1
+       Move L
+          Waypoint 8 (Move gripper into first row)  
+    Elseif counter = 2
+          Move L
+             Waypoint 9 (Move gripper into second row)  
+    Elseif counter = 3
+          Move L
+            Waypoint 10 (Move gripper into third row)  
+    Elseif counter = 4
+          Move L
+  Waypoint 11 (Move gripper into fourth row)  
+Gripper Open B mm
+Wait 1 sec.
+Move L
+  Waypoint 9 (Move gripper vertically)
+Move J 
+  Waypoint 10 (Move to grinding wheel)
+Force = Y N
+Multipoint Path 
+  Move J to Waypoint 11
+  Curve to Waypoint 12
+Multipoint Path 
+  Move J to Waypoint 13
+  Curve to Waypoint 14 (Same Curve)
+  Move J 
+    Waypoint 15
+  Force = Y N
+Multipoint Path 
+  Move J to Waypoint 16
+  Curve to Waypoint 17
+Multipoint Path 
+  Move J to Waypoint 18
+  Curve to Waypoint 19 (Same Curve)
+Move J 
+  Waypoint 20 (To bin)
+ Gripper Close 
+
+ 
+ 
+ 
+ 
+ 
+ Thread 1
+  Set Conveyor 1 = On
+  Wait Sensor 1 = HI
+  Set Conveyor 1 = Off
+  Wait Sensor 1 = LO
+  sync ()
