@@ -37,7 +37,7 @@ Loop
             Waypoint 10 (Move gripper into third row)  
     Elseif counter = 4
           Move L
-  Waypoint 11 (Move gripper into fourth row)  
+            Waypoint 11 (Move gripper into fourth row)  
 Gripper Open B mm
 Wait 1 sec.
 Move L
